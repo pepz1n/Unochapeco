@@ -37,5 +37,5 @@ int main(){
     if(a==b && b==c){
         printf("\nTodos os numeros sao iguais: %d, %d, %d\n", a, b, c);
     }//Fim do if da linha 37
-    system("PAUSE");
+    system("PAUSE");//Para o executável não fechar sozinho
 }//Fim do código
