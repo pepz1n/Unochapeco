@@ -14,23 +14,23 @@ int main(){
     if(a>b){
         if(a>c){
           if(b>c){
-              printf("\nOs numeros em ordem crescente sao: %d, %d, %d\n", a, b, c);
+              printf("\nO numero %d e maior que o numero %d e o numero %d.\n", a, b, c);
           } else { //Else do if da linha 16
-                printf("\nOs numeros em ordem crescente sao: %d, %d, %d\n", a, c, b);
+                printf("\nO numero %d e maior que o numero %d e o numero %d.\n", a, c, b);
           }// Fim do else da linha 18
         } else { //Else do if da linha 15 para se a<c
-            printf("\nOs numeros em ordem crescente sao: %d, %d, %d\n", c, a, b);
+            printf("\nO numero %d e maior que o numero %d e o numero %d.\n", c, a, b);
         } //Fim do else da linha 21 
     } else { //Else do if da linha 14 para se a<b
         if(b>c){
             if(a>c){
-                printf("\nOs numeros em ordem crescente sao: %d, %d, %d\n", b, a, c);
+                printf("\nO numero %d e maior que o numero %d e o numero %d.\n", b, a, c);
             } else { // Else do if da linha 26
-                printf("\nOs numeros em ordem crescente sao: %d, %d, %d\n", b, c, a);
+                printf("\nO numero %d e maior que o numero %d e o numero %d.\n", b, c, a);
             }
         } else { //Else do if da linha 25
             if(b>a){
-                printf("\nOs numeros em ordem crescente sao: %d, %d, %d\n", c, b, a);
+                printf("\nO numero %d e maior que o numero %d e o numero %d.\n", c, b, a);
             }//Fim do if da linha 32
         }//Fim do else da linha 31
     }//Fim do else da linha 24
