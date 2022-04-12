@@ -11,6 +11,8 @@ int main(){
     printf("Escreva o terceiro numero:\n");
     scanf("%d", &c);//Leitura do terceiro numero para variavel "c"
     
+    //Processamento
+    
     if(a>b){
         if(a>c){
           if(b>c){
@@ -27,7 +29,7 @@ int main(){
                 printf("\nO numero %d e maior que o numero %d e o numero %d.\n", b, a, c);
             } else { // Else do if da linha 26
                 printf("\nO numero %d e maior que o numero %d e o numero %d.\n", b, c, a);
-            }
+            }//Fim do Else da linha 28
         } else { //Else do if da linha 25
             if(b>a){
                 printf("\nO numero %d e maior que o numero %d e o numero %d.\n", c, b, a);
