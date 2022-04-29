@@ -1,5 +1,5 @@
 # Unochapeco
-Códigos da faculdade 1º semestre
-Programação básica
-Maior parte em C
+Codes from  1º semester off computer science college
+Basic programming
+Most part of the codes in C.
 
