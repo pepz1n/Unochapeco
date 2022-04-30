@@ -51,7 +51,8 @@ if (valorPago<total){
     printf ("valor insuficiente!!");
 }else{
     troco = valorPago - total;
-    printf ("o troco e: %.2f",troco);
+    printf ("o troco e: %.2f\n",troco);
 }
+system("pause");
 }
 
