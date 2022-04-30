@@ -41,7 +41,7 @@ int main(){
         }
         
     }else{
-        printf("\nNumero invalido");
+        printf("\nNumero invalido\n");
     }
-    
+system("pause");
 }
