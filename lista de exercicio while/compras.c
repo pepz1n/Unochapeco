@@ -1,4 +1,5 @@
 /*
+4- Fazer um programa que leia as compras de uma pessoa, um item/qtdade por vez. Ao final, moste o total, solicite o pagamento e calcule o troco.
 
 int qtdeCompras, cont
 Real total, pagamento, troco, pagamento			

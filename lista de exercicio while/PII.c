@@ -1,4 +1,7 @@
 /* 
+5- Jogo do “piii”: o usuario deve digitar qual multiplo de 2 à 5 ele escolhe, e mostrar os numeros de 1 a 20, trocando os respectivos multiplos por “PI”.
+
+
 Algoritmo_PII
 	Inicio
 		int numero, multiplo;
