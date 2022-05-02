@@ -10,12 +10,12 @@
             Se (numero1<numero2) Entao:
 				Enquanto (numero1 <= numero2) faça:
 					Escreva (numero1);
-					numero1 = numero1 + 1;
+					numero1++;
 				FimEnquanto;
 			Senao:
 				Enquanto (numero2<=numero1) faça:
 					Escreva (numero2);
-					numero2 = numero2 + 1
+					numero2++;
 				Fimenquanto;
 			FimSE
 		Fim
