@@ -11,13 +11,13 @@ Algoritmo_PII
 		Se (multiplo>1 && multiplo<6)Entao:
 			numero = 1
 			Enquanto (numero < 20) Faça:
-                Se (numero % multiplo == 0)Então
-	                Escreva (“PI”);
-                Senao:
-	                Escreva (numero);
-                FimSe;
-                numero++;
-            FimEnquanto;
+              		    Se (numero % multiplo == 0)Então
+	                	Escreva (“PI”);
+              		    Senao:
+	               		 Escreva (numero);
+               		    FimSe;
+                	    numero++;
+            		FimEnquanto;
 		Senao:
 			Escreva (“Numero invalido);
 		FimSe;
