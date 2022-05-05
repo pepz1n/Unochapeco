@@ -5,7 +5,7 @@
 int main(){
     int cont;
 
-    for(cont = 0; cont<=100; cont=cont+2){
+    for(cont = 0; cont<=1000000; cont=cont+2){
         printf ("\n%d", cont);
     }
 }

@@ -6,3 +6,9 @@ o programa deve gerar um numero randomico de 1 a 100 no inicio e o usuario tem 6
     se acertou em ate 5 vezes : acertou
     se acertou na ultima vez: ufa, foi por pouco!
     senao: game over ! perdeu!
+*/
+#include <stdio.h>
+int main (){
+
+    
+}
