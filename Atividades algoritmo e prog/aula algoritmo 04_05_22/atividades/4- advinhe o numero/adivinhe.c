@@ -39,5 +39,5 @@ int main (){
     if (cont==7)printf("\nGame over! perdeu, o numero era: %d\n",aleatorio);
 
 
-    systemctl hibernate
+    system("pause");
 }
