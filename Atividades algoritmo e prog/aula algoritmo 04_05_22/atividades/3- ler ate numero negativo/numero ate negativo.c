@@ -51,7 +51,5 @@ int main(){
     printf("\nO maior valor foi: %d", maior);
     printf("\nO menor valor foi: %d\n", menor);
 
-    system("pause");
-
-
+    system ("pause");
 }
