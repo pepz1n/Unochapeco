@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "Nome.C": "cpp",
+        "time.h": "c"
     }
 }
