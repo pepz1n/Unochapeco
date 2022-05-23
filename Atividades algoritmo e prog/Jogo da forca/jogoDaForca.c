@@ -12,6 +12,7 @@ int main(){
     gets(palavra);
     //tirar o buffer
     setbuf(stdin, NULL);
+    system("cls");
 
     //contagem de letrasda palavra lida
     letras = strlen(palavra);
