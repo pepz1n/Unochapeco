@@ -12,11 +12,10 @@ int main(){
     digitos = strlen(num);
 
     for(int i=0; i<digitos; i++){
-        if(strstr(num,"0")){
-            num[i]= ' ';
+        if(num[i] != '0'){
+            printf("%c", num[i]);
         }
     }
-    printf("%s",num);
     
     system ("pause");
 
