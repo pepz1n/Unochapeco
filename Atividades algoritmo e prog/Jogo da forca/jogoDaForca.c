@@ -10,9 +10,9 @@ int main(){
     printf("\nBem vindo ao jogo da forca!!");
     printf("\n\nDigite uma palavra: ");
     gets(palavra);
+    system("cls");
     //tirar o buffer
     setbuf(stdin, NULL);
-    system("cls");
 
     //contagem de letrasda palavra lida
     letras = strlen(palavra);
@@ -81,7 +81,7 @@ int main(){
         }
     
     
-    }while(vidas>0||pontos!=letras);
+    }while(vidas>0&&pontos!=letras);
     
     system("PAUSE");
 
