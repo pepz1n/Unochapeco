@@ -53,9 +53,6 @@ int main(){
     if(a>b+c) printf("TRIANGULO OBTUSANGULO\n");
 
     if(a<b+c) printf("TRIANGULO ACUTANGULO\n");
-    a/=a;
-    b/=b;
-    c/=c;
 
     if(a==b||b==c) printf("TRIANGULO ISOSCELES\n");
     if(a==b&&b==c) printf("TRIANGULO EQUILATERO\n");
