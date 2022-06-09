@@ -54,7 +54,7 @@ int main(){
 
     if(a<b+c) printf("TRIANGULO ACUTANGULO\n");
 
-    if(a==b||b==c) printf("TRIANGULO ISOSCELES\n");
+    if(a==b^b==c) printf("TRIANGULO ISOSCELES\n");
     if(a==b&&b==c) printf("TRIANGULO EQUILATERO\n");
     
     
