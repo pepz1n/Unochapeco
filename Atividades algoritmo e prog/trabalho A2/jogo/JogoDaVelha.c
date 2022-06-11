@@ -2,6 +2,7 @@
 char tabela[3][3];
 char digito;
 int linha, coluna, ganhou=0;
+int jogadas= 0;
 
 void jogo();
 void validacaoX();
@@ -57,6 +58,7 @@ void jogo(){
     while(1){
         printf("\nTurno do X, informe a casa (linha coluna, 0 ate 2): ");
         scanf("%d %d", &linha, &coluna);
+        jogadas++;
         tabela [linha] [coluna] = 'x';
         printf("\n\n\n\n\n");
         for(int i=0; i<3; i++){
@@ -74,6 +76,7 @@ void jogo(){
         
         printf("\nTurno do O, informe a casa (linha coluna, 0 ate 2): ");
         scanf("%d %d", &linha, &coluna);
+        jogadas++;
         tabela [linha] [coluna] = 'O'; 
         printf("\n\n\n\n\n");
         for(int i=0; i<3; i++){
@@ -132,6 +135,9 @@ void validacaoX(){
     else if(tabela[0][2] == 'x' && tabela[0][2] == tabela[1][1] && tabela[0][0]==tabela[2][0]){
         printf("\nO X ganhou\n\n");
         ganhou = 1;
+    }else if(jogadas==9){
+        printf("\nDeu velha!\n\n");
+        ganhou = 1;
     }
 }
 
@@ -175,5 +181,9 @@ void validacaoO(){
     else if(tabela[0][2] == 'O' && tabela[0][2] == tabela[1][1] && tabela[0][0]==tabela[2][0]){
         printf("\nO O ganhou\n\n");
         ganhou = 1;
+    } else if(jogadas==9){
+        printf("\nDeu velha!\n\n");  
+        ganhou = 1;
     }
 }
+
