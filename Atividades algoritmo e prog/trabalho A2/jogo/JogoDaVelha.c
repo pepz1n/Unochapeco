@@ -114,7 +114,7 @@ void validacaoX(){
         ganhou = 1;
     }
     //validacao da terceira coluna
-    else if(tabela[2][0] == 'x' && tabela[2][0] == tabela[2][1] && tabela[2][0]==tabela[2][2]){
+    else if(tabela[0][2] == 'x' && tabela[0][2] == tabela[1][2] && tabela[0][2]==tabela[2][2]){
         printf("\nO X ganhou\n\n");
         ganhou = 1;
     }
@@ -147,7 +147,7 @@ void validacaoO(){
         ganhou = 1;
     }
     //validacao da segunda coluna
-    else if(tabela[0][1] == 'O' && tabela[0][1] == tabela[1][2] && tabela[0][1]==tabela[2][1]){
+    else if(tabela[0][1] == 'O' && tabela[0][1] == tabela[1][1] && tabela[0][1]==tabela[2][1]){
         printf("\nO O ganhou\n\n");
         ganhou = 1;
     }
@@ -157,7 +157,7 @@ void validacaoO(){
         ganhou = 1;
     }
     //validacao da terceira coluna
-    else if(tabela[2][0] == 'O' && tabela[2][0] == tabela[2][1] && tabela[2][0]==tabela[2][2]){
+    else if(tabela[0][2] == 'O' && tabela[0][2] == tabela[1][2] && tabela[0][2]==tabela[2][2]){
         printf("\nO O ganhou\n\n");
         ganhou = 1;
     }
