@@ -1,6 +1,8 @@
 {
     "files.associations": {
+        "*.c": "c",
         "Nome.C": "cpp",
+        "stdio.h": "c"
     },
     "cSpell.ignoreWords": [
         "letradigi",
