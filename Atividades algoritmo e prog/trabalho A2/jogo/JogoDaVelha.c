@@ -25,6 +25,7 @@ int main()
         {
         case 1:
             ganhou = 0;
+            jogadas= 0;
             jogo();
             break;
 
