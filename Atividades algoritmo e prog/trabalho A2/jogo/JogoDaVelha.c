@@ -16,10 +16,11 @@ int main()
     int comecar;
 
     while (1)
-    {
+    {   
+        //switch case para iniciar ou sair do jogo 
         printf("Jogo Da Velha\n");
         if(JogarNovamente!=1){
-        printf("1-Jogar\n");
+            printf("1-Jogar\n");
         }else{
             printf("1-Jogar Novamente\n");
         }
@@ -40,7 +41,7 @@ int main()
         }
     }
 }
-
+//funçao para o jogo principal
 void jogo()
 {
     printf("\nOpcao jogar selecionada");
@@ -71,6 +72,7 @@ void jogo()
 
     while (1)
     {
+        //Turno do X
         printf("\nTurno do X, informe a casa (linha coluna, 0 ate 2): ");
         scanf("%d %d", &linha, &coluna);
         jogadas++;
@@ -96,11 +98,13 @@ void jogo()
             JogarNovamente=1;
             break; 
         }
+        //turno do O
         printf("\nTurno do O, informe a casa (linha coluna, 0 ate 2): ");
         scanf("%d %d", &linha, &coluna);
         jogadas++;
         tabela[linha][coluna] = 'O';
         printf("\n\n\n\n\n");
+        //Printa a tabela na tela
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -174,6 +178,7 @@ void validacaoX()
         printf("\nO X ganhou\n\n");
         ganhou = 1;
     }
+    //Caso todas as casas sejam completadas e não tenha um vencedor a velha é acionada
     else if (jogadas == 9)
     {
         printf("\nDeu velha!\n\n");
@@ -232,6 +237,7 @@ void validacaoO()
         printf("\nO O ganhou\n\n");
         ganhou = 1;
     }
+    //Caso todas as casas sejam completadas e não tenha um vencedor a velha é acionada
     else if (jogadas == 9)
     {
         printf("\nDeu velha!\n\n");
