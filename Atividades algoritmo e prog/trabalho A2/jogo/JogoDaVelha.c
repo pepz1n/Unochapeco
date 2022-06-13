@@ -18,9 +18,10 @@ int main()
     while (1)
     {   
         //switch case para iniciar ou sair do jogo 
-        printf("Jogo Da Velha\n");
+        
         if(JogarNovamente!=1){
             printf("1-Jogar\n");
+            printf("Jogo Da Velha\n");
         }else{
             printf("1-Jogar Novamente\n");
         }
