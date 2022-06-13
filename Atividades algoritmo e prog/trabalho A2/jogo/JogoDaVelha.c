@@ -5,7 +5,8 @@ char tabela[3][3];
 char digito;
 int linha, coluna, ganhou = 0;
 int jogadas = 0;
-
+int JogarNovamente=0;
+//declarar funçoes
 void jogo();
 void validacaoX();
 void validacaoO();
@@ -17,7 +18,11 @@ int main()
     while (1)
     {
         printf("Jogo Da Velha\n");
+        if(JogarNovamente!=1){
         printf("1-Jogar\n");
+        }else{
+            printf("1-Jogar Novamente\n");
+        }
         printf("2-Sair\n");
         scanf("%d", &comecar);
 
@@ -40,7 +45,7 @@ void jogo()
 {
     printf("\nOpcao jogar selecionada");
     printf("\n\n\n");
-
+    //para o inicio todos os digitos recebem ?
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
@@ -50,7 +55,7 @@ void jogo()
     }
 
     printf("\n\n\n\n\n");
-
+    //printa a tabela inicial na tela
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
@@ -71,6 +76,7 @@ void jogo()
         jogadas++;
         tabela[linha][coluna] = 'x';
         printf("\n\n\n\n\n");
+        //imprime a tabela atualizada
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -83,11 +89,13 @@ void jogo()
             }
             printf("\n");
         }
+        //chama a funçao validacaoX para conferir o resultado
         validacaoX();
-
-        if (ganhou == 1)
-            break;
-
+        //se for correto a variavel recebe 1 e o jogo acaba
+        if (ganhou == 1){
+            JogarNovamente=1;
+            break; 
+        }
         printf("\nTurno do O, informe a casa (linha coluna, 0 ate 2): ");
         scanf("%d %d", &linha, &coluna);
         jogadas++;
@@ -105,12 +113,17 @@ void jogo()
             }
             printf("\n");
         }
-        validacaoX();
-        if (ganhou == 1)
-            break;
+        //Chama a funçao validacaoO para validar o reesultado
+        validacaoO();
+        //se for correto a variavel recebe 1 e o jogo acaba
+        if (ganhou == 1){
+            JogarNovamente=1;
+            break; 
+        }
     }
 }
 
+//validaçao X
 void validacaoX()
 {
     // Validacao da primeira coluna
@@ -168,6 +181,7 @@ void validacaoX()
     }
 }
 
+//função para validaçao de O
 void validacaoO()
 {
     // Validacao da primeira coluna
