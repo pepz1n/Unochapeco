@@ -6,6 +6,9 @@ char digito;
 int linha, coluna, ganhou = 0;
 int jogadas = 0;
 int JogarNovamente=0;
+//Melhoria : adição de flags para a pontuação do vencedor
+int ganhouX = 0;
+int ganhouO= 0;
 //declarar funçoes
 void jogo();
 void validacaoX();
@@ -18,11 +21,14 @@ int main()
     while (1)
     {   
         //switch case para iniciar ou sair do jogo 
-        printf("Jogo Da Velha\n");
+    
         if(JogarNovamente!=1){
+            printf("Jogo Da Velha\n");
             printf("1-Jogar\n");
         }else{
-            printf("1-Jogar Novamente\n");
+            printf("Vitorias X = %d ", ganhouX);
+            printf("\nVitorias O = %d ", ganhouO);
+            printf("\n1-Jogar Novamente\n");
         }
         printf("2-Sair\n");
         scanf("%d", &comecar);
@@ -135,54 +141,64 @@ void validacaoX()
     {
         printf("\nO X ganhou\n\n");
         ganhou = 1;
+        ganhouX++;
+
     }
     // validacao da primeira linha
     else if (tabela[0][0] == 'x' && tabela[0][0] == tabela[0][1] && tabela[0][0] == tabela[0][2])
     {
         printf("\nO X ganhou\n\n");
         ganhou = 1;
+        ganhouX++;
     }
     // validacao da segunda coluna
     else if (tabela[0][1] == 'x' && tabela[0][1] == tabela[1][1] && tabela[0][1] == tabela[2][1])
     {
         printf("\nO X ganhou\n\n");
         ganhou = 1;
+        ganhouX++;
     }
     // validacao da segunda linha
     else if (tabela[1][0] == 'x' && tabela[1][0] == tabela[1][1] && tabela[1][0] == tabela[1][2])
     {
         printf("\nO X ganhou\n\n");
         ganhou = 1;
+        ganhouX++;
     }
     // validacao da terceira coluna
     else if (tabela[0][2] == 'x' && tabela[0][2] == tabela[1][2] && tabela[0][2] == tabela[2][2])
     {
         printf("\nO X ganhou\n\n");
         ganhou = 1;
+        ganhouX++;
     }
     // validacao da terceira linha
     else if (tabela[2][0] == 'x' && tabela[2][0] == tabela[2][1] && tabela[2][0] == tabela[2][2])
     {
         printf("\nO X ganhou\n\n");
         ganhou = 1;
+        ganhouX++;
     }
     // Validacao da diagonal principal
     else if (tabela[0][0] == 'x' && tabela[0][0] == tabela[1][1] && tabela[0][0] == tabela[2][2])
     {
         printf("\nO X ganhou\n\n");
         ganhou = 1;
+        ganhouX++;
     }
     // Validacao da diagonal oposta
     else if (tabela[0][2] == 'x' && tabela[0][2] == tabela[1][1] && tabela[0][0] == tabela[2][0])
     {
         printf("\nO X ganhou\n\n");
         ganhou = 1;
+        ganhouX++;
     }
     //Caso todas as casas sejam completadas e não tenha um vencedor a velha é acionada
     else if (jogadas == 9)
     {
         printf("\nDeu velha!\n\n");
         ganhou = 1;
+        ganhouX++;
     }
 }
 
@@ -194,48 +210,56 @@ void validacaoO()
     {
         printf("\nO O ganhou\n\n");
         ganhou = 1;
+        ganhouO++;
     }
     // validacao da primeira linha
     else if (tabela[0][0] == 'O' && tabela[0][0] == tabela[0][1] && tabela[0][0] == tabela[0][2])
     {
         printf("\nO O ganhou\n\n");
         ganhou = 1;
+        ganhouO++;
     }
     // validacao da segunda coluna
     else if (tabela[0][1] == 'O' && tabela[0][1] == tabela[1][1] && tabela[0][1] == tabela[2][1])
     {
         printf("\nO O ganhou\n\n");
         ganhou = 1;
+        ganhouO++;
     }
     // validacao da segunda linha
     else if (tabela[1][0] == 'O' && tabela[1][0] == tabela[1][1] && tabela[1][0] == tabela[1][2])
     {
         printf("\nO O ganhou\n\n");
         ganhou = 1;
+        ganhouO++;
     }
     // validacao da terceira coluna
     else if (tabela[0][2] == 'O' && tabela[0][2] == tabela[1][2] && tabela[0][2] == tabela[2][2])
     {
         printf("\nO O ganhou\n\n");
         ganhou = 1;
+        ganhouO++;
     }
     // validacao da terceira linha
     else if (tabela[2][0] == 'O' && tabela[2][0] == tabela[2][1] && tabela[2][0] == tabela[2][2])
     {
         printf("\nO O ganhou\n\n");
         ganhou = 1;
+        ganhouO++;
     }
     // Validacao da diagonal principal
     else if (tabela[0][0] == 'O' && tabela[0][0] == tabela[1][1] && tabela[0][0] == tabela[2][2])
     {
         printf("\nO O ganhou\n\n");
         ganhou = 1;
+        ganhouO++;
     }
     // Validacao da diagonal oposta
     else if (tabela[0][2] == 'O' && tabela[0][2] == tabela[1][1] && tabela[0][0] == tabela[2][0])
     {
         printf("\nO O ganhou\n\n");
         ganhou = 1;
+        ganhouO++;
     }
     //Caso todas as casas sejam completadas e não tenha um vencedor a velha é acionada
     else if (jogadas == 9)
