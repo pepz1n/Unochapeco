@@ -50,6 +50,7 @@ int main()
 //funçao para o jogo principal
 void jogo()
 {
+    system("cls");
     printf("\nOpcao jogar selecionada");
     printf("\n\n\n");
     //para o inicio todos os digitos recebem ?
@@ -85,6 +86,8 @@ void jogo()
         tabela[linha][coluna] = 'x';
         printf("\n\n\n\n\n");
         //imprime a tabela atualizada
+        //Melhoria: limpa a sequencia de cima para uma melhor experiencia
+        system("cls");
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -105,12 +108,15 @@ void jogo()
             break; 
         }
         //turno do O
+        
         printf("\nTurno do O, informe a casa (linha coluna, 0 ate 2): ");
         scanf("%d %d", &linha, &coluna);
         jogadas++;
         tabela[linha][coluna] = 'O';
         printf("\n\n\n\n\n");
         //Printa a tabela na tela
+        //Melhoria: limpa a sequencia de cima para uma melhor experiencia
+        system("cls");
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
