@@ -25,6 +25,7 @@ int main()
         if(JogarNovamente!=1){
             printf("Jogo Da Velha\n");
             printf("1-Jogar\n");
+            printf("Jogo Da Velha\n");
         }else{
             printf("Vitorias X = %d ", ganhouX);
             printf("\nVitorias O = %d ", ganhouO);
