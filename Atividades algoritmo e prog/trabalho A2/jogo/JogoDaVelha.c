@@ -5,11 +5,11 @@ char tabela[3][3];
 char digito;
 int linha, coluna, ganhou = 0;
 int jogadas = 0;
-int JogarNovamente=0;
-//Melhoria : adição de flags para a pontuação do vencedor
+int JogarNovamente = 0;
+// Melhoria : adição de flags para a pontuação do vencedor
 int ganhouX = 0;
-int ganhouO= 0;
-//declarar funçoes
+int ganhouO = 0;
+// declarar funçoes
 void jogo();
 void validacaoX();
 void validacaoO();
@@ -19,14 +19,17 @@ int main()
     int comecar;
 
     while (1)
-    {   
-        //switch case para iniciar ou sair do jogo 
-    
-        if(JogarNovamente!=1){
+    {
+        // switch case para iniciar ou sair do jogo
+
+        if (JogarNovamente != 1)
+        {
             printf("Jogo Da Velha\n");
             printf("1-Jogar\n");
             printf("Jogo Da Velha\n");
-        }else{
+        }
+        else
+        {
             printf("Vitorias X = %d ", ganhouX);
             printf("\nVitorias O = %d ", ganhouO);
             printf("\n1-Jogar Novamente\n");
@@ -38,7 +41,7 @@ int main()
         {
         case 1:
             ganhou = 0;
-            jogadas= 0;
+            jogadas = 0;
             jogo();
             break;
 
@@ -48,13 +51,13 @@ int main()
         }
     }
 }
-//funçao para o jogo principal
+// funçao para o jogo principal
 void jogo()
 {
     system("cls");
     printf("\nOpcao jogar selecionada");
     printf("\n\n\n");
-    //para o inicio todos os digitos recebem ?
+    // para o inicio todos os digitos recebem ?
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
@@ -64,7 +67,7 @@ void jogo()
     }
 
     printf("\n\n\n\n\n");
-    //printa a tabela inicial na tela
+    // printa a tabela inicial na tela
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
@@ -80,14 +83,14 @@ void jogo()
 
     while (1)
     {
-        //Turno do X
+        // Turno do X
         printf("\nTurno do X, informe a casa (linha coluna, 0 ate 2): ");
         scanf("%d %d", &linha, &coluna);
         jogadas++;
         tabela[linha][coluna] = 'x';
         printf("\n\n\n\n\n");
-        //imprime a tabela atualizada
-        //Melhoria: limpa a sequencia de cima para uma melhor experiencia
+        // imprime a tabela atualizada
+        // Melhoria: limpa a sequencia de cima para uma melhor experiencia
         system("cls");
         for (int i = 0; i < 3; i++)
         {
@@ -101,22 +104,23 @@ void jogo()
             }
             printf("\n");
         }
-        //chama a funçao validacaoX para conferir o resultado
+        // chama a funçao validacaoX para conferir o resultado
         validacaoX();
-        //se for correto a variavel recebe 1 e o jogo acaba
-        if (ganhou == 1){
-            JogarNovamente=1;
-            break; 
+        // se for correto a variavel recebe 1 e o jogo acaba
+        if (ganhou == 1)
+        {
+            JogarNovamente = 1;
+            break;
         }
-        //turno do O
-        
+        // turno do O
+
         printf("\nTurno do O, informe a casa (linha coluna, 0 ate 2): ");
         scanf("%d %d", &linha, &coluna);
         jogadas++;
         tabela[linha][coluna] = 'O';
         printf("\n\n\n\n\n");
-        //Printa a tabela na tela
-        //Melhoria: limpa a sequencia de cima para uma melhor experiencia
+        // Printa a tabela na tela
+        // Melhoria: limpa a sequencia de cima para uma melhor experiencia
         system("cls");
         for (int i = 0; i < 3; i++)
         {
@@ -130,17 +134,18 @@ void jogo()
             }
             printf("\n");
         }
-        //Chama a funçao validacaoO para validar o reesultado
+        // Chama a funçao validacaoO para validar o reesultado
         validacaoO();
-        //se for correto a variavel recebe 1 e o jogo acaba
-        if (ganhou == 1){
-            JogarNovamente=1;
-            break; 
+        // se for correto a variavel recebe 1 e o jogo acaba
+        if (ganhou == 1)
+        {
+            JogarNovamente = 1;
+            break;
         }
     }
 }
 
-//validaçao X
+// validaçao X
 void validacaoX()
 {
     // Validacao da primeira coluna
@@ -149,7 +154,6 @@ void validacaoX()
         printf("\nO X ganhou\n\n");
         ganhou = 1;
         ganhouX++;
-
     }
     // validacao da primeira linha
     else if (tabela[0][0] == 'x' && tabela[0][0] == tabela[0][1] && tabela[0][0] == tabela[0][2])
@@ -200,7 +204,7 @@ void validacaoX()
         ganhou = 1;
         ganhouX++;
     }
-    //Caso todas as casas sejam completadas e não tenha um vencedor a velha é acionada
+    // Caso todas as casas sejam completadas e não tenha um vencedor a velha é acionada
     else if (jogadas == 9)
     {
         printf("\nDeu velha!\n\n");
@@ -209,7 +213,7 @@ void validacaoX()
     }
 }
 
-//função para validaçao de O
+// função para validaçao de O
 void validacaoO()
 {
     // Validacao da primeira coluna
@@ -268,7 +272,7 @@ void validacaoO()
         ganhou = 1;
         ganhouO++;
     }
-    //Caso todas as casas sejam completadas e não tenha um vencedor a velha é acionada
+    // Caso todas as casas sejam completadas e não tenha um vencedor a velha é acionada
     else if (jogadas == 9)
     {
         printf("\nDeu velha!\n\n");
