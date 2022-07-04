@@ -11,104 +11,59 @@ void VerificarCNPJ(char IncricaoFederal[18]);
 void gerarCPF();
 
 
-void CPFverificar(char IncricaoFederal[12])
-{//Função do Algoritmo 
-
-    int soma1, soma2, parte1, parte2, parte3;
-    int parte5, parte6, parte7; 
-    int dig1, dig2, erro=0;
-
-    char temp;
-    int CPF[11];
-    // int j = 0;
-
-  for (int i=0; i<11; i++)
-  { 
-    // if(IncricaoFederal[i] !='.' && IncricaoFederal[i] !='/' && IncricaoFederal[i] !='-') //Se na posição i do laço de repetição for diferente ou igual a . , / , - o laço ignora 
-    
-    //  temp = IncricaoFederal[i];
-     CPF[i] = atoi(IncricaoFederal[i]);  
-	//  temp = ' ';   
-    //  j++; 
-
-    
-  }
-
-
-
-
-//Calculo do Primeiro Dígito
-
-     soma1 =((CPF[0] * 10) +
-             (CPF[1] * 9) +
-             (CPF[2] * 8) +
-             (CPF[3] * 7) +
-             (CPF[4] * 6) +
-             (CPF[5] * 5) +
-             (CPF[6] * 4) +
-             (CPF[7] * 3) +
-             (CPF[8] * 2));
-             
-     parte1 = (soma1 / 11);
-     parte2 = (parte1 * 11);
-     parte3 = (soma1 - parte2);
-     dig1   = ( 11 - parte3);
-     if (dig1 > 9) dig1 = 0;
-    //validação do primeiro digito de verificação 
-     if (dig1 == CPF[9]){
+void CPFverificar(char *cpf)
+{
+    int i, j, digito1 = 0, digito2 = 0;
+    if(strlen(cpf) != 11){
+        printf("CPF invalido, digitos insuficientes!");
+    }
         
-        //calculo do segundo digito de verificação
-        soma2 =((CPF[0]*11) +
-             (CPF[1] * 10) +
-             (CPF[2] * 9) +
-             (CPF[3] * 8) +
-             (CPF[4] * 7) +
-             (CPF[5] * 6) +
-             (CPF[6] * 5) +
-             (CPF[7] * 4) +
-             (CPF[8] * 3) +
-             (dig1 * 2));
-             
-        parte5 = (soma2 / 11);
-        parte6 = (parte5 * 11);
-        parte7 = (soma2 - parte6);
-        dig2   = (11 - parte7);
-        if (dig2 > 9) dig2 = 0;
+
+    else if((strcmp(cpf,"00000000000") == 0) || (strcmp(cpf,"11111111111") == 0) || (strcmp(cpf,"22222222222") == 0) ||
+            (strcmp(cpf,"33333333333") == 0) || (strcmp(cpf,"44444444444") == 0) || (strcmp(cpf,"55555555555") == 0) ||
+            (strcmp(cpf,"66666666666") == 0) || (strcmp(cpf,"77777777777") == 0) || (strcmp(cpf,"88888888888") == 0) ||
+            (strcmp(cpf,"99999999999") == 0)){
+                printf("\nCPF invalido, digitos iguais nao sao aceitos"); ///se o CPF tiver todos os números iguais ele é inválido.
+    }
+       
+       
+    
+    else{
+        ///digito 1---------------------------------------------------
+        for(i = 0, j = 10; i < strlen(cpf)-2; i++, j--) ///multiplica os números de 10 a 2 e soma os resultados dentro de digito1
+            digito1 += (cpf[i]-48) * j;
         
-        //validação do segundo digito do cpf
-        if(dig2 == CPF[10] ){
-           
-            //Invalida CPF com todos os dígitos iguais. 
-            if(CPF[0] == CPF[1] && CPF[1]==CPF[2] && CPF[2]==CPF[3] && CPF[3]==CPF[4] && CPF[4]==CPF[5] 
-            && CPF[5] == CPF[6] && CPF[6]==CPF[7] && CPF[7]==CPF[8] && CPF[8]==CPF[9]){
-               
-               erro++;      
-            }
-               
-                      
+        digito1 %= 11;//digito um recebe mod de 11 
+       
+        if(digito1 < 2) //caso mod de 11 seja menor que 2 (0 e 1 ) entao ele recebe 0
+            digito1 = 0;
+        else        // senao ele recebe o numero 11 menos o mod
+            digito1 = 11 - digito1;
+        
+        if((cpf[9]-48) != digito1)
+            printf("\nCPF invalido"); ///se o digito 1 não for o mesmo que o da validação CPF é inválido
+        else{
+        
+            ///digito de validação 2
+            for(i = 0, j = 11; i < strlen(cpf)-1; i++, j--) ///multiplica os números de 11 a 2 e soma os resultados dentro de digito2
+                        digito2 += (cpf[i]-48) * j;
             
-      
-        }else{
-            erro++;
+            digito2 %= 11;
+            
+            if(digito2 < 2){
+                digito2 = 0;
+            }
+                
+            else{
+                digito2 = 11 - digito2;
+            }
+                
+            if((cpf[10]-48) != digito2)
+            printf("\nCPF invalido\n"); ///se o digito 2 não for o mesmo que o da validação CPF é inválido
         }
-
-
-    }else{
-        erro++;
     }
-
-// Informa CPF Valido, e estado de Emissao.
-
-    if (erro==0) 
-    {
-        printf("\n\nCPF Valido\n\n");
-    }
-    else
-    {
-        printf ("\n\nCPF Invalido");
-    }
-
-return;
+    
+    printf("\nCPF valido\n");
 
 
 }
@@ -189,10 +144,9 @@ int main () {
         switch (caso) {
 
             case 1: 
-                printf("\nValidador de CPF escolhido, digite o CPF a ser validado: ");
+                printf("\nValidador de CPF escolhido, digite o CPF a ser validado:\n ");
                 fflush(stdin);
                 gets(variavelcpf);
-                printf("\n%s\n", variavelcpf);
                 CPFverificar(variavelcpf);
                 break;
             
