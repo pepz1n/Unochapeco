@@ -5,8 +5,11 @@
 #include <stdio.h>
 #include <time.h>
 
+int cnpj[30];
+char numeros[30];
+
 void CPFverificar(char *cpf);
-void VerificarCNPJ(char IncricaoFederal[18]);
+void VerificarCNPJ(int cnpj[18]);
 void gerarCPF();
 void validarEstado(char cpf[11]);
 
@@ -70,24 +73,54 @@ void CPFverificar(char *cpf)
     printf("\nCPF valido\n");
 }
 
-void VerificarCNPJ(char cnpj[18])
-{
-    int i, j, digito1 = 0, digito2 = 0;
-    if (strlen(cnpj) != 14)
-    {
-        printf("CNPJ invalido, digitos insuficientes!");
-    }
+void VerificarCNPJ(int cnpj[18])
+    //primeiro digito verificador
+{  int soma1=((cnpj[0]*5)+
+         (cnpj[1]*4)+
+         (cnpj[2]*3)+
+         (cnpj[3]*2)+
+         (cnpj[4]*9)+
+         (cnpj[5]*8)+
+         (cnpj[6]*7)+
+         (cnpj[7]*6)+
+         (cnpj[8]*5)+
+         (cnpj[9]*4)+
+         (cnpj[10]*3)+
+         (cnpj[11]*2));
+   int parte1= (soma1 / 11);
+   int parte2=(parte1 * 11);
+   int parte3=(soma1 - parte2);
+   int dig1=(11 - parte3);
+   if(dig1>9)dig1=0;
+   printf("\nPrimeiro digito: %d\n",dig1);
+   
+   
+    //segundo digito verificador
+  
+  
+   int soma2=((cnpj[1]*6)+
+         (cnpj[2]*5)+
+         (cnpj[3]*4)+
+         (cnpj[4]*3)+
+         (cnpj[5]*2)+
+         (cnpj[6]*9)+
+         (cnpj[7]*8)+
+         (cnpj[8]*7)+
+         (cnpj[9]*6)+
+         (cnpj[10]*5)+
+         (cnpj[11]*4)+
+         (cnpj[12]*3)+
+         (dig1*2));
+   int  parte5=(soma2 / 11);
+   int parte6=(parte5 * 11);
+   int parte7=(soma2 - parte6);
+   int dig2=(11 - parte7);
+   if(dig2>9)dig2=0;
+   printf("\nSegundo digito.: %d\n",dig2);
 
-    else if ((strcmp(cnpj, "00000000000000") == 0) || (strcmp(cnpj, "11111111111111") == 0) || (strcmp(cnpj, "22222222222222") == 0) ||
-             (strcmp(cnpj, "33333333333333") == 0) || (strcmp(cnpj, "44444444444444") == 0) || (strcmp(cnpj, "55555555555555") == 0) ||
-             (strcmp(cnpj, "66666666666666") == 0) || (strcmp(cnpj, "77777777777777") == 0) || (strcmp(cnpj, "88888888888888") == 0) ||
-             (strcmp(cnpj, "99999999999999") == 0))
-    {
-        printf("\nCNPJ invalido, digitos iguais nao sao aceitos"); /// se o CNPJ tiver todos os números iguais ele é inválido.
-    }
+   
 }
 
-void gerarcnpj();
 
 // função de gerar CPF
 void gerarCPF()
@@ -191,7 +224,8 @@ int main()
         printf("\n2- validador CNPJ");
         printf("\n3- Gerador CNPJ");
         printf("\n4- Gerador CPF");
-        printf("\n5- Verificador de estado\n");
+        printf("\n5- Verificador de estado");
+        printf("\n6- Sair\n");
 
         scanf("%d", &caso);
 
@@ -206,10 +240,15 @@ int main()
             break;
 
         case 2:
-            printf("Validador de CNPJ escolhido, digite o CNPJ a ser validado: ");
+            printf("Validador de CNPJ escolhido, digite um digito por vez do cnpj a ser validado: ");
             fflush(stdin);
-            gets(variavelcpf);
-            VerificarCNPJ(variavelcpf);
+            for(int i=0;i<=13;i++)
+            {
+                numeros[i]=getche();
+                cnpj[i]=atoi(numeros);
+                numeros[i]=' ';
+            }
+            VerificarCNPJ(numeros);
             break;
         case 4:
             printf("\nGerador de CPF selecionado, aperte um botao para continuar.\n");
@@ -222,6 +261,11 @@ int main()
             gets(variavelcpf);
             validarEstado(variavelcpf);
             break;
+        case 6:
+            printf("\nADEUS!");
+            return;
+        default:
+                printf("\nNumero Incorreto tente um da lista!");
         }
     }
 }
