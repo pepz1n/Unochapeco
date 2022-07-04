@@ -16,7 +16,7 @@ int main(){
 	scanf("%d", &QTDnumeros);
 	do{
 		Mar = 0;
-		Joa = 0;
+		Joa = 0;//
 		for(int c = 0; c < QTDnumeros; c++){
 			scanf("%d", &val);
 			if(val==0){
