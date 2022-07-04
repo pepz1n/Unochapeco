@@ -72,7 +72,7 @@ void CPFverificar(char *cpf)
 
     printf("\nCPF valido\n");
 }
-
+//função para validar CNPJ(FALHA)
 void VerificarCNPJ(int cnpj[18])
     //primeiro digito verificador
 {  int soma1=((cnpj[0]*5)+
@@ -111,14 +111,13 @@ void VerificarCNPJ(int cnpj[18])
          (cnpj[11]*4)+
          (cnpj[12]*3)+
          (dig1*2));
-   int  parte5=(soma2 / 11);
+   int parte5=(soma2 / 11);
    int parte6=(parte5 * 11);
    int parte7=(soma2 - parte6);
    int dig2=(11 - parte7);
    if(dig2>9)dig2=0;
    printf("\nSegundo digito.: %d\n",dig2);
 
-   
 }
 
 
