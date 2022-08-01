@@ -44,12 +44,12 @@ class Pessoa{
 
 int main(){
 
-  Pessoa pes(1, 32, "Mateus",80, 1.78, 2004);
+  Pessoa valmir(1, 32, "Mateus",80, 1.78, 2004);
   
   int anoAtual = 0;
-  // cout << pes.nome << endl;
-  pes.listar();
+  // cout << valmir.nome << endl;
+  valmir.listar();
   cin >> anoAtual;
-  cout << pes.imc() <<endl;
-  cout << pes.idadeDoManinho(anoAtual) << " e a idade do maninho" << endl;
+  cout << valmir.imc() <<endl;
+  cout << valmir.idadeDoManinho(anoAtual) << " e a idade do maninho" << endl;
 }
