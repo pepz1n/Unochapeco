@@ -8,6 +8,7 @@ class Pessoa{
     float peso, altura;
 
   public:
+
     Pessoa(int id, int idade, string nome, float peso, float altura, int ano){
       this->id = id;
       this->idade = idade;
@@ -15,6 +16,7 @@ class Pessoa{
       this->peso = peso; 
       this->altura = altura;
       this->ano = ano;
+      
     }
     ~Pessoa(){
       cout << "passei pelo destrutor" << endl;
