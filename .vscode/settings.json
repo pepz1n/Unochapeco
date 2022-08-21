@@ -3,7 +3,8 @@
       "*.c": "c",
       "Nome.C": "cpp",
       "stdio.h": "c",
-      "iostream": "cpp"
+      "iostream": "cpp",
+      "ostream": "cpp"
     },
     "cSpell.ignoreWords": [
         "letradigi",
