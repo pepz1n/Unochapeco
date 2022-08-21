@@ -34,8 +34,8 @@ protected:
   string endereco;
 
 public:
-   Cliente(){};
-   ~Cliente(){};
+  Cliente(){};
+  ~Cliente(){};
 
   void setId(int id) { id = id; };
   void setNome(string nome) { nome = nome; };
@@ -49,15 +49,23 @@ public:
 class PessoaFisica : public Cliente
 {
 private:
-int cpf;
+  int cpf;
   int rg;
 
 public:
+  PessoaFisica() : Cliente(){};
+  ~PessoaFisica(){};
   void setCpf(int cpf) { this->cpf = cpf; };
   void setRg(int rg) { this->rg = rg; };
+  void setNome(string nome) { this->nome = nome; };
+  void setId(int id) { this->id = id; };
+  void setEndereco(string endereco) { this->endereco = endereco; };
 
   int getCpf() { return cpf; };
   int getRg() { return rg; };
+  string getNome() { return nome; };
+  string getEndereco() { return endereco; };
+  int getId() { return id; };
 };
 
 class PessoaJuridica : public Cliente
@@ -67,11 +75,19 @@ private:
   string nomeFantasia;
 
 public:
+  PessoaJuridica() : Cliente(){};
+  ~PessoaJuridica(){};
   void setNomeFantasia(string nomeFantasia) { this->nomeFantasia = nomeFantasia; };
   void setCnpj(int cnpj) { this->cnpj = cnpj; };
+  void setNome(string nome) { this->nome = nome; };
+  void setId(int id) { this->id = id; };
+  void setEndereco(string endereco) { this->endereco = endereco; };
 
   string getNomeFantasia() { return nomeFantasia; };
   int getCnpj() { return cnpj; };
+  string getNome() { return nome; };
+  string getEndereco() { return endereco; };
+  int getId() { return id; };
 };
 
 class Venda
@@ -100,9 +116,6 @@ public:
   int getAno() { return ano; };
   int getMes() { return mes; };
   int getQuantidade() { return quantidade; };
-
-
-  
 };
 
 int main()
@@ -129,10 +142,5 @@ int main()
   venda.setCliente(&p);
   venda.setProduto(&produto);
 
-
-
-  cout << p.getId() << " Nome: " << venda.getCliente().getNome() << " Desc: " << venda.getProduto().getDesc() << " quantidade:" << venda.getQuantidade() << " valor:" << venda.getProduto().getPreco() * venda.getQuantidade() << endl;
-
-
-
+  cout << "ID: " << venda.getCliente().getId() << " Nome: " << venda.getCliente().getNome() << " Desc: " << venda.getProduto().getDesc() << " quantidade:" << venda.getQuantidade() << " valor:" << venda.getProduto().getPreco() * venda.getQuantidade() << endl;
 }
