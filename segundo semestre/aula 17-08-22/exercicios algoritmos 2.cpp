@@ -90,8 +90,7 @@ public:
   int getId() { return id; };
 };
 
-class Venda
-{
+class Venda: public Cliente, Produto{
 private:
   Cliente *clienteId;
   Produto *produtoId;
@@ -110,8 +109,8 @@ public:
   void setMes(int mes) { this->mes = mes; };
   void setQuantidade(int quantidade) { this->quantidade = quantidade; };
 
-  Cliente getCliente() { return *clienteId; };
-  Produto getProduto() { return *produtoId; };
+  Cliente *getCliente() { return clienteId; };
+  Produto *getProduto() { return produtoId; };
   int getDia() { return dia; };
   int getAno() { return ano; };
   int getMes() { return mes; };
@@ -142,5 +141,5 @@ int main()
   venda.setCliente(&p);
   venda.setProduto(&produto);
 
-  cout << "ID: " << venda.getCliente().getId() << " Nome: " << venda.getCliente().getNome() << " Desc: " << venda.getProduto().getDesc() << " quantidade:" << venda.getQuantidade() << " valor:" << venda.getProduto().getPreco() * venda.getQuantidade() << endl;
+  cout << "ID: " << venda.getCliente()->getId() << " Nome: " << venda.getCliente()->getNome() << " Desc: " << venda.getProduto()->getDesc() << " quantidade:" << venda.getQuantidade() << " valor:" << venda.getProduto()->getPreco() * venda.getQuantidade() << endl;
 }
