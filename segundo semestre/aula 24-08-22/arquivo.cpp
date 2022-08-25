@@ -10,7 +10,7 @@ int main(){
   getline(cin, lista);
   texto<< lista << endl;
   texto.close();
-
+  
   fstream saida;
   saida.open("lista.txt", fstream::in );
   while( saida.good()){
