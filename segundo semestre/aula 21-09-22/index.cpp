@@ -265,7 +265,6 @@ int main () {
       (no1->cauda(no1))->prox = no2;
       cout << "Sua Lista: "<< endl;
       no1->mostrarTudo(no1);
-      break;
     default:
       break;
     }
