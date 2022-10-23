@@ -154,6 +154,19 @@ class Lista {
       return cont;
     };
 
+    void ordenar (Lista *lista) {
+      for (int  i = 0; i <= 10; i++) {
+        lista = lista->cabeca(lista);
+        for (int j; lista; lista = lista->prox) {
+          if (lista->prox && lista->a < (lista->prox)->a) {
+            int aux = lista->a;
+            lista->a = (lista->prox)->a;
+            (lista->prox)->a = aux;
+          };
+        };
+      };
+    };
+
     Lista *tirarUltimo (Lista *lista) {
       ((lista->cauda(lista))->ant)->prox = NULL;
       return lista;
@@ -185,7 +198,7 @@ class Lista {
         lista = lista->prox;
       };
       return cont;
-    }
+    };
 };
 
 
@@ -203,7 +216,8 @@ int main () {
     cout << "7 - Mostrar tudo a partir da cauda" << endl;
     cout << "8 - Excluir ultimo" << endl;
     cout << "9 - Excluir Primero" << endl;
-    cout << "10 - Quantidade de vezes que um numero aparece";
+    cout << "10 - Quantidade de vezes que um numero aparece" << endl;
+    cout << "11 - Ordenar lista" << endl;
     int x;
     cin >> x;
 
@@ -247,17 +261,18 @@ int main () {
     
     case 9:
       lista1 = lista1->tirarPrimeiro(lista1);
-      lista1->mostrarLista(lista1);
       break;
     
     case 10:
       cout << "quantidade: " << lista1->qntd(lista1) << "\n\n" <<endl;
       break;
+
+    case 11:
+      lista1->ordenar(lista1);
+      lista1->mostrarLista(lista1);
+      break;
     default:
       break;
     }; 
-  }
-  
-
-
-}
+  };
+};
