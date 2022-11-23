@@ -4,7 +4,10 @@
       "Nome.C": "cpp",
       "stdio.h": "c",
       "iostream": "cpp",
-      "ostream": "cpp"
+      "ostream": "cpp",
+      "new": "cpp",
+      "iosfwd": "cpp",
+      "*.tcc": "cpp"
     },
     "cSpell.ignoreWords": [
       "letradigi",
