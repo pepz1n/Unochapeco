@@ -117,14 +117,16 @@ class Pilha {
 
     while (entrada.good()) {
       string text;
-      getline(entrada, text);
-      socorro = stoi(text);
-      nova->push(nova, socorro);
+      if (getline(entrada, text) and text != "\n") {
+        socorro = stoi(text);
+        nova->push(nova, socorro);
+      }
     };
+    cout << endl;
+    nova->mostrar(nova);
 
     entrada.close();
 
-    nova->mostrar(nova);
     system("pause");
   };
 };
