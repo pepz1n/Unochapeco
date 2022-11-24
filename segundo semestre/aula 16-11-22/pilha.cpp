@@ -142,6 +142,7 @@ int main () {
     cout << "2 - Pop;" << endl;
     cout << "3 - Drop;" << endl;
     cout << "4 - Escrever a partir do topo;" << endl;
+    cout << "5 - Sair" << endl;
     int forget;
     cin >> forget;
     switch (forget) {
@@ -163,6 +164,10 @@ int main () {
       break;
     case 4:
       pilha->peloTopo(pilha);
+      break;
+    case 5:
+      return 0;
+      break;
     default:
       break;
     };
