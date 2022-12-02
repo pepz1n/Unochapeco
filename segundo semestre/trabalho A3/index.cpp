@@ -114,8 +114,8 @@ class ArmazemPilha {
         cout << "Nao Tem nada no Armazem!" << endl;
         return;
       }  
+      cout << "Armazem: " << endl;
       while (armazemPilha) {
-        cout << "Armazem: " << endl;
         cout << "Codigo: " << armazemPilha->container->getCodigo(armazemPilha->container) << "\tPeso: " << armazemPilha->container->getPeso(armazemPilha->container) << "\tConteudo: " << armazemPilha->container->getConteudo(armazemPilha->container) << "\t Posicao no Armazem: " << posicao << endl;
         armazemPilha = armazemPilha->prox;
         posicao++;
@@ -153,12 +153,23 @@ class Deque {
         deque->container = valor;
         return;
       };
-
+    
+      deque = deque->cauda(deque);
       Deque *nova = new Deque;
       nova->container = valor;
       deque->prox = nova;
 
       return;
+    }
+
+    Deque *cauda (Deque *deque) {
+      while (deque) {
+        if (!deque->prox){
+          return deque;
+        };
+
+        deque = deque->prox;
+      }
     }
 
     ArmazemPilha *receberContainers (ArmazemPilha *armazem) {
@@ -175,8 +186,8 @@ class Deque {
         cout << "Nao Tem nada no Deque!" << endl;
         return;
       }  
+      cout << "Deque: " << endl;
       while (deque) {
-        cout << "Deque: " << endl;
         cout << "Codigo: " << deque->container->getCodigo(deque->container) << "\tPeso: " << deque->container->getPeso(deque->container) << "\tConteudo: " << deque->container->getConteudo(deque->container) << "\t Posicao no deque: " << posicao << endl;
         deque = deque->prox;
         posicao++;
@@ -266,7 +277,7 @@ int main () {
     cout << "2 - Mostrar Armazem" << endl;
     cout << "3 - Passar do armazem para o deque" << endl;
     cout << "4 - Mostrar deque (fila para navio)" << endl;
-    cout << "5 - Passar do deque para o navio" << endl;
+    cout << "5 - Passar do deuqe para o navio" << endl;
     cout << "6 - Mostrar navio" << endl;
     cin >> escolha;
     
@@ -314,6 +325,7 @@ int main () {
       case 6:
         system("CLS");
         navio->mostrar(navio);
+        break;
       default:
         system("CLS");
         break;
