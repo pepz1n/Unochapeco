@@ -7,7 +7,14 @@
       "ostream": "cpp",
       "new": "cpp",
       "iosfwd": "cpp",
-      "*.tcc": "cpp"
+      "*.tcc": "cpp",
+      "array": "cpp",
+      "bitset": "cpp",
+      "deque": "cpp",
+      "string": "cpp",
+      "vector": "cpp",
+      "memory": "cpp",
+      "regex": "cpp"
     },
     "cSpell.ignoreWords": [
       "letradigi",

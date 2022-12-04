@@ -47,19 +47,19 @@ class Container {
 };
 
 
-class ArmazemPilha {
+class Armazem {
   public:
     Container *container;
-    ArmazemPilha *prox;
+    Armazem *prox;
 
-    ArmazemPilha () {
+    Armazem () {
       this->container = nullptr;
       this->prox = nullptr;
     }
 
-    ~ArmazemPilha () {}
+    ~Armazem () {}
 
-    ArmazemPilha *cauda (ArmazemPilha *pilha) {
+    Armazem *cauda (Armazem *pilha) {
       while (pilha) {
         
         if(!pilha->prox) {
@@ -73,7 +73,7 @@ class ArmazemPilha {
 
     void push (Container *container) {
       if (this->contador(this) == 5) {
-        cout << "Impossivel Adicionar Mais Containers, mande para o navio assim que possivel!" << endl;
+        cout << "Impossivel Adicionar Mais Containers, mande para o deque assim que possivel!" << endl;
         return;
       }
       if (!this->container && !this->prox) {
@@ -81,7 +81,7 @@ class ArmazemPilha {
         return;
       }
 
-      ArmazemPilha *novaPilha = new ArmazemPilha;
+      Armazem *novaPilha = new Armazem;
       
       novaPilha->container = container;
       (this->cauda(this))->prox = novaPilha;
@@ -89,7 +89,7 @@ class ArmazemPilha {
       return;
     }
 
-    Container *pop (ArmazemPilha *pilha) {
+    Container *pop (Armazem *pilha) {
       Container *valor;
       while (pilha) {
         if (!pilha->prox) {
@@ -107,26 +107,26 @@ class ArmazemPilha {
       }
     }
 
-    void mostrar (ArmazemPilha *armazemPilha) {
+    void mostrar (Armazem *pilhaArmazem) {
       system("cls");
       int posicao = 1;
-      if (!armazemPilha->container) {
+      if (!pilhaArmazem->container) {
         cout << "Nao Tem nada no Armazem!" << endl;
         return;
       }  
       cout << "Armazem: " << endl;
-      while (armazemPilha) {
-        cout << "Codigo: " << armazemPilha->container->getCodigo(armazemPilha->container) << "\tPeso: " << armazemPilha->container->getPeso(armazemPilha->container) << "\tConteudo: " << armazemPilha->container->getConteudo(armazemPilha->container) << "\t Posicao no Armazem: " << posicao << endl;
-        armazemPilha = armazemPilha->prox;
+      while (pilhaArmazem) {
+        cout << "Codigo: " << pilhaArmazem->container->getCodigo(pilhaArmazem->container) << "\tPeso: " << pilhaArmazem->container->getPeso(pilhaArmazem->container) << "\tConteudo: " << pilhaArmazem->container->getConteudo(pilhaArmazem->container) << "\t Posicao no Armazem: " << posicao << endl;
+        pilhaArmazem = pilhaArmazem->prox;
         posicao++;
       }
     }
 
-    int contador (ArmazemPilha *armazemPilha) {
+    int contador (Armazem *armazem) {
       int cont = 0;
-      while (armazemPilha) {
+      while (armazem) {
         cont ++;
-        armazemPilha = armazemPilha->prox;
+        armazem = armazem->prox;
       }
       
       return cont;
@@ -172,21 +172,24 @@ class Deque {
       }
     }
 
-    ArmazemPilha *receberContainers (ArmazemPilha *armazem) {
+    Armazem *receberContainers (Armazem *armazem) {
       while (armazem->container) {
         this->push(this, armazem->pop(armazem));
       }
-      armazem = new ArmazemPilha;
+      armazem = new Armazem;
     }
 
     void mostrar (Deque *deque) {
       system("cls");
       int posicao = 1;
+
       if (!deque->container) {
         cout << "Nao Tem nada no Deque!" << endl;
         return;
       }  
+
       cout << "Deque: " << endl;
+
       while (deque) {
         cout << "Codigo: " << deque->container->getCodigo(deque->container) << "\tPeso: " << deque->container->getPeso(deque->container) << "\tConteudo: " << deque->container->getConteudo(deque->container) << "\t Posicao no deque: " << posicao << endl;
         deque = deque->prox;
@@ -222,7 +225,7 @@ class Navio {
     }
 
     void push (Container *container) {
-      if (!this->container && !this->prox) {
+      if (!this->container && !this->prox) {  
         this->container = container;
         return;
       }
@@ -246,10 +249,12 @@ class Navio {
     void mostrar (Navio *navio) {
       system("cls");
       int posicao = 1;
+
       if (!navio->container) {
         cout << "Nao Tem nada no Navio!" << endl;
         return;
-      }  
+      }
+
       while (navio) {
         cout << "Navio: " << endl;
         cout << "Codigo: " << navio->container->getCodigo(navio->container) << "\tPeso: " << navio->container->getPeso(navio->container) << "\tConteudo: " << navio->container->getConteudo(navio->container) << "\t Posicao no Navio: " << posicao << endl;
@@ -261,7 +266,7 @@ class Navio {
 
 
 int main () {
-  ArmazemPilha *armazem = new ArmazemPilha;
+  Armazem *armazem = new Armazem;
   Deque *deque = new Deque;
   Navio *navio = new Navio;
 
