@@ -38,7 +38,6 @@ class Pilha {
       };
       pilha = pilha->prox;
     }
-    
   } 
   
   void push (Pilha *pilha, int entrada) {

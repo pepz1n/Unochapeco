@@ -45,15 +45,35 @@ void imprimir (Pilha *p) {
     cout << p->cod << endl;
 }
 
-void remover (Pilha *p) {
-    if (p->p->p == nullptr) {
-        p->p = nullptr;
-    }
-    if(p->p != nullptr) {
-        remover(p->p);
+//void remover (Pilha *p) {
+//    if (p->p == nullptr) {
+//        p = nullptr;
+//    }else if (p->p->p == nullptr) {
+//        p->p = nullptr;
+//    }
+//    if(p->p != nullptr) {
+//        remover(p->p);
+//    }
+//}
+
+int pop (Pilha *pilha_) {
+    int valor;
+    while (pilha_) {
+
+        if (!pilha_->p) {
+            valor = pilha_->cod;
+            pilha_->cod = 0;
+            return valor;
+        }
+        if (!(pilha_->p)->p) {
+            valor = (pilha_->p)->cod;
+            delete (pilha_->p)->p;
+            pilha_->p = nullptr;
+            return valor;
+        };
+        pilha_ = pilha_->p;
     }
 }
-
 
 int main () {
     int i, cod, x;
@@ -69,6 +89,6 @@ int main () {
 
     pesquisa(x, fundo, TAM);
     cout << "\n\n";
-    remover(fundo);
+    pop(fundo);
     imprimir(fundo);
 }
