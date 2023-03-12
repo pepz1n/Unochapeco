@@ -1,12 +1,11 @@
 #include "iostream"
 #include "cstdlib"
-#include "stdlib.h"
 #define  TAM 4
 bool primeiro = true;
 using namespace std;
 
 typedef struct s_pilha{
-    int cod;
+    int cod = 0;
     s_pilha *p = nullptr;
 }Pilha;
 
@@ -14,8 +13,7 @@ Pilha *fundo, *topo;
 int tamP = 0;
 
 void inserir (int x) {
-    Pilha *p;
-    p = (Pilha *)malloc(sizeof (Pilha));
+    auto *p = (Pilha *)malloc(sizeof (Pilha));
     p->cod = x;
     if (primeiro) {
         fundo = p;
@@ -29,9 +27,9 @@ void inserir (int x) {
 
 void pesquisa (int x, Pilha *p, int cont) {
     if (p->cod == x) {
-        cout << "Numero: " << x << " esta na posicao " << cont << " da pilha" << endl;
+        cout << "Numero: " << x << " esta na posicao " << cont-1 << " da pilha" << endl;
         return;
-    };
+    }
     cont--;
     if (p->p != nullptr) {
         pesquisa(x, p->p, cont);
@@ -45,16 +43,15 @@ void imprimir (Pilha *p) {
     cout << p->cod << endl;
 }
 
-//void remover (Pilha *p) {
-//    if (p->p == nullptr) {
-//        p = nullptr;
-//    }else if (p->p->p == nullptr) {
-//        p->p = nullptr;
-//    }
-//    if(p->p != nullptr) {
-//        remover(p->p);
-//    }
-//}
+Pilha *ultimo (Pilha *pilha) {
+    while (pilha) {
+        if (!pilha->p) {
+            return  pilha;
+        }
+        pilha = pilha->p;
+    }
+    return nullptr;
+}
 
 int pop (Pilha *pilha_) {
     int valor;
@@ -70,10 +67,44 @@ int pop (Pilha *pilha_) {
             delete (pilha_->p)->p;
             pilha_->p = nullptr;
             return valor;
-        };
+        }
         pilha_ = pilha_->p;
     }
+    return 0;
 }
+
+void push (int x, Pilha *pilha) {
+    Pilha *p, *topoMeio = ultimo(pilha);
+
+    p = (Pilha *) malloc(sizeof (Pilha));
+    p->cod = x;
+
+    if (pilha->cod) {
+        topoMeio->p = p;
+    } else {
+        pilha->cod = x;
+    }
+}
+
+void removerMeio (Pilha *pilha, int valor) {
+    auto *aux = (Pilha *) malloc(sizeof(Pilha));
+    while (true) {
+        int ultimoPilha = ultimo(pilha)->cod;
+        if (ultimoPilha == valor) {
+            pop(pilha);
+            while (aux->cod != 0) {
+                int ultimoValor = pop(aux);
+                push(ultimoValor, pilha);
+            }
+            break;
+        } else {
+            pop(pilha);
+            push(ultimoPilha,aux);
+        }
+    }
+}
+
+
 
 int main () {
     int i, cod, x;
@@ -83,12 +114,13 @@ int main () {
         inserir(cod);
     }
     imprimir(fundo);
-
     cout << "Digite um elemento para pesquisar: ";
     cin >> x;
 
     pesquisa(x, fundo, TAM);
     cout << "\n\n";
-    pop(fundo);
+    cout << "Digite um valor para remover: ";
+    cin >> x;
+    removerMeio(fundo, x);
     imprimir(fundo);
 }
