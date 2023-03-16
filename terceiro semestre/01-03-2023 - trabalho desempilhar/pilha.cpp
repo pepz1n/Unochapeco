@@ -21,7 +21,6 @@ void inserir (int x) {
     } else {
         topo->p = p;
     }
-    topo = p;
     tamP++;
 }
 
