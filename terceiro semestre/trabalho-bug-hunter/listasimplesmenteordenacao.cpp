@@ -1,7 +1,6 @@
 #include <stdio.h>
-#include "iostream"
 #include <cstdlib>
-#define TAM 2
+#define TAM 4
 typedef struct strLista{
     int n;
     strLista *prox;
@@ -12,30 +11,40 @@ void imprimir(Lista *l){
         imprimir(l->prox);
     }
 }
-Lista *ordena(Lista *raiz){
-	Lista *atual=raiz, *prox, *aux, *anterior;
-	while(atual != NULL){
-	    prox=atual->prox;
+Lista *ordena(Lista *raiz) {
+    Lista *atual, *prox, *anterior, *temp;
+    int trocou = 1;
 
-		while(prox != NULL){
-		    if(atual->n > prox->n){
-		        if(atual == raiz)
-		            raiz = prox;
-		        else
-		            anterior->prox = prox;
-		        aux = atual;
-		        atual->prox = prox->prox;
-		        prox->prox = aux;
-		        atual = prox;
-		        prox = atual->prox;
-		    } else
-		        prox = prox->prox;
-		}
-		anterior = atual;
-		atual=atual->prox;
-	}
-	return raiz;	
+    while (trocou) {
+        trocou = 0;
+        anterior = NULL;
+        atual = raiz;
+
+        while (atual->prox) {
+            prox = atual->prox;
+
+            if (atual->n > prox->n) {
+                trocou = 1;
+                temp = prox->prox;
+
+                if (anterior) {
+                    anterior->prox = prox;
+                } else {
+                    raiz = prox;
+                }
+
+                prox->prox = atual;
+                atual->prox = temp;
+                anterior = prox;
+            } else {
+                anterior = atual;
+                atual = prox;
+            }
+        }
+    }
+    return raiz;
 }
+
 int main(){
     Lista *raiz, *atual, *temp;
     raiz = (Lista *)malloc(sizeof(Lista));
@@ -53,8 +62,8 @@ int main(){
     }
     imprimir(raiz);
     printf("Ordenacao \n");
-	raiz = ordena(raiz);
-	printf("imprimir \n");
-	imprimir(raiz);
+    raiz = ordena(raiz);
+    printf("imprimir \n");
+    imprimir(raiz);
 }
 
